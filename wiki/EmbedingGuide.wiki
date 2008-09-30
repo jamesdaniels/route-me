@@ -1,4 +1,5 @@
 #summary How-to guide on making an application containing a map
+#labels Featured,Phase-Deploy,Phase-Support
 
 = Introduction =
 
