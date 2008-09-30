@@ -1,0 +1,109 @@
+#summary How-to guide on making an application containing a map
+
+= Introduction =
+
+This guide takes you step-by-step through making an iphone application with an embedded map.
+
+
+== Setting up your directories ==
+
+First, we're going to make a directory to hold your project as well as the route-me mapview and proj4.
+
+Open terminal and grab mapview and proj4 from SVN:
+
+{{{
+$ mkdir projects
+
+$ cd projects/
+
+$ svn checkout http://route-me.googlecode.com/svn/trunk/Proj4
+......
+Checked out revision n.
+
+$ svn checkout http://route-me.googlecode.com/svn/trunk/MapView
+......
+Checked out revision n.
+}}}
+
+== Creating the project ==
+
+In XCode, create a new project. You can use any of the templates; but these instructions assume you use the view-based application template. Place your new project in the same directory into which you checked out Proj4 and MapView (projects/ above).
+
+== Adding a project reference ==
+
+Next we need to add a reference to the MapView project. You do not need a reference to Proj4. So long as the proj4 project is sitting next to the mapview project, it should work fine.
+
+Open up the MapView project you just checked out in XCode. You can do this in finder or using terminal by typing:
+
+{{{
+$ open MapView/MapView.xcodeproj
+}}}
+
+Now you should have both xcode projects open on your screen. In the MapView project at the top of the "Groups & Files" sidebar is the MapView project root. Click and drag that into the Frameworks group of your new project.
+
+Do not copy items. Make the reference type "Relative to Project".
+
+You can now close the MapView project.
+
+== Configuring build dependancies ==
+
+Now we need to configure your application to build with MapView. There are a lot of small steps here; and if you miss one your project won't build / run.
+
+First, click the MapView.xcodeproj reference we just added to our project. There should be two elements inside it: libMapView.a and MapView.app. In the files list click the little checkbox next to libMapView.a. This will add libMapView.a to the project targets.
+
+In the Groups & Files sidebar, open Targets and double-click on your application's target.
+
+===General tab===
+In the general tab, we will add MapView as a direct dependancy.
+
+Assuming you correctly added libMapView.a to the target, it should currently be listed as a linked library.
+
+Click the direct dependancy '+' and add MapView.xcodeproj->MapView. This causes MapView to be compiled when your project is compiled (if necessary).
+
+We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics and QuartzCore.
+
+===Build Tab===
+Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add '../MapView'. Check the 'Recursive' box and click Ok.
+
+===Properties tab===
+Identifier will currently be: com.yourcompany.${PRODUCT_NAME:identifier}
+If you have a code signing identity, change yourcompany appropriately so you can deploy & test on the iphone.
+
+----
+Build the project. If all goes to plan, it should compile ~143 files (Proj4), then ~26 files (MapView) then ~6 files (your application). Successive compilations will be much faster.
+
+You will probably get a few warnings from Proj4 and something about code signing identities in MapView. These warnings are safe to ignore.
+
+== Adding a map ==
+
+Open the Resources group in XCode. Open MyAppViewController.xib (it will have a slightly different name depending on what your project is called).
+
+Click on the view. In the attributes window, first tab check View->Interaction->"Multiple Touch". In the Identity tab, change the class identity to RMMapView.
+
+Theoretically, it should work now but it won't. If you try to run it you will get this runtime error:
+{{{2008-09-30 14:15:15.229 MyMappingApp[40631:20b] Unknown class RMMapView in Interface Builder file.}}}
+
+XCode has stripped the RMMapView symbol from the final executable (its not referenced anywhere - gcc considers it dead code. Of course, gcc doesn't notice interface builder's reference)
+
+The work-around to this is to add a reference RMMapView somewhere (anywhere).
+
+In XCode, open MyMappingAppViewController.m. (It will be in the Classes group).
+
+Near the top of the file add:
+{{{
+#import "RMMapView.h"
+}}}
+
+You will also find the commented out method "viewDidLoad". Uncomment this method and add this code:
+
+{{{
+// Implement viewDidLoad to do additional setup after loading the view.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [RMMapView class];
+}
+}}}
+
+In this method we could also set where the view is facing, or set any other properties of the view. (The controller's 'view' property will be set to our RMMapView*.)
+
+Build and run and you are done.
