@@ -75,6 +75,10 @@ Build the project. If all goes to plan, it should compile ~143 files (Proj4), th
 
 You will probably get a few warnings from Proj4 and something about code signing identities in MapView. These warnings are safe to ignore.
 
+== Project Resources ==
+
+Copy the marker png files from MapView's Resources folder into the assets folder of your parent project otherwise markers won't have images to plot.
+
 == Adding a map ==
 
 Open the Resources group in XCode. Open MyAppViewController.xib (it will have a slightly different name depending on what your project is called).
