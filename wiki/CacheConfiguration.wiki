@@ -52,6 +52,9 @@ As an example, this is a {{{routeme.plist}}} file that sets up the default cache
 </plist>
 }}}
 
+The default strategy of the database cache is currently LRU. The reason why it is possible to switch to FIFO (which is not the most intelligent cache purge strategy) is that for LRU, each read access to the db cache is followed by a write access to update the last used date. The FIFO strategy works without this penalty and as such may be favorable in some scenarios.
+
+
 == A word of caution ==
 
 With this mechanism, it is easily possible to set up cache structures that degrade MapView's performance considerably. If you are unsure, just stick to the defaults and do not set up a {{{routeme.plist}}}.
