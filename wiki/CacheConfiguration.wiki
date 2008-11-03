@@ -7,7 +7,7 @@ If you embed MapView into your application, a default caching strategy will be u
 
 = Details =
 
-The default cache structure of MapView without customization currently consists of a memory cache of capacity 32, followed by a disk cache, followed by a sqlite-powered database cache.
+The default cache structure of MapView without customization currently consists of a memory cache of capacity 32, followed by a sqlite-powered database cache.
 
 To set up your own cache configuration, all you need to do is create a property list file named {{{routeme.plist}}} in your project and add it to the target you are building. The property list should be a dictionary with at least the key {{{caches}}}. The contents of {{{caches}}} is an array of dictionaries, each setting up one layer of your cache. 
 
