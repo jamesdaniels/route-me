@@ -61,7 +61,7 @@ Assuming you correctly added libMapView.a to the target, it should currently be 
 
 Click the direct dependancy '+' and add MapView.xcodeproj->MapView. This causes MapView to be compiled when your project is compiled (if necessary).
 
-We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics and QuartzCore and libsqlite3.dylib
+We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics, CoreLocation, QuartzCore and libsqlite3.dylib
 
 ===Build Tab===
 Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add '../MapView'. Check the 'Recursive' box and click Ok.
