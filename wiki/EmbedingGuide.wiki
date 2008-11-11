@@ -46,7 +46,7 @@ Do not copy items. Make the reference type "Relative to Project".
 
 You can now close the MapView project.
 
-== Configuring build dependancies ==
+== Configuring build dependencies ==
 
 Now we need to configure your application to build with MapView. There are a lot of small steps here; and if you miss one your project won't build / run.
 
@@ -55,13 +55,13 @@ First, click the MapView.xcodeproj reference we just added to our project. There
 In the Groups & Files sidebar, open Targets and double-click on your application's target.
 
 ===General tab===
-In the general tab, we will add MapView as a direct dependancy.
+In the general tab, we will add MapView as a direct dependency.
 
 Assuming you correctly added libMapView.a to the target, it should currently be listed as a linked library.
 
 Click the direct dependancy '+' and add MapView.xcodeproj->MapView. This causes MapView to be compiled when your project is compiled (if necessary).
 
-We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics, CoreLocation, QuartzCore and libsqlite3.dylib
+We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics, CoreLocation (obrand: that may not be needed, I will confirm), QuartzCore and libsqlite3.dylib
 
 ===Build Tab===
 Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add '../MapView'. Check the 'Recursive' box and click Ok.
