@@ -52,7 +52,7 @@ We also need to add a couple other linked libraries. Click the linked libraries 
 ===Build Tab===
 Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add the path to the MapView directory contained in the route-me project located on your file system. (Note that if there are any spaces in the path, enclose the entire entry with "". For example: "/Users/johndoe/Projects/Map Applications/Route-Me/trunk/MapView" Check the 'Recursive' box and click Ok.
 
-===Properties tab===
+=== Properties tab===
 Identifier will currently be: com.yourcompany.${PRODUCT_NAME:identifier}
 If you have a code signing identity, change yourcompany appropriately so you can deploy & test on the iphone.
 
@@ -71,6 +71,7 @@ This is the most trivial way to integrate route-me in a project and does not req
 
 In your Controller header file (for example: MyViewController), import MapView.h:
 
+{{{
 #import "HerdMapView.h"
 
 @interface MyViewController : UIViewController {
@@ -79,9 +80,11 @@ In your Controller header file (for example: MyViewController), import MapView.h
 }
 
 @property (nonatomic, retain) RMMapView *mapView;;
+}}}
 
 In your Controller implementation file (.m), write the following in the loadView method:
 
+{{{
 - (void)loadView
 {
 	[self setMapView:[[[RMMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, desiredwidth, desiredheight)]autorelease]];
@@ -90,7 +93,7 @@ In your Controller implementation file (.m), write the following in the loadView
 	self.view = herdMapView;
         // Your own code
 }
-
+}}}
 Save and run.
 
 == Adding a map for Interface Builder based application ==
