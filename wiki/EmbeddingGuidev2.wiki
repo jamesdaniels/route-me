@@ -32,6 +32,8 @@ Then in the main Xcode menu, choose "Project"->"Add to Project..." and then sele
 As a result, the MapView.xcodeproj (with the same blue icon than the root element of your project) should appear just under the root element of your project.
 If you expand the MapView.xcodeproj, you will see 2 files: MapView.app and libMapView.a
 
+Note that this method is described in the "Xcode Project Management Guide", p.37 Referencing Other Projects.
+
 == Configuring build dependencies ==
 
 Now we need to configure your application to build with MapView. There are a lot of small steps here; and if you miss one your project won't build / run.
@@ -45,7 +47,7 @@ In the general tab, we will add MapView as a direct dependency.
 
 Assuming you correctly added libMapView.a to the target, it should currently be listed as a linked library.
 
-Click the direct dependancy '+' and add MapView.xcodeproj->MapView. This causes MapView to be compiled when your project is compiled (if necessary).
+Click the direct dependency '+' and add MapView.xcodeproj->MapView. This causes MapView to be compiled when your project is compiled (if necessary).
 
 We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics, CoreLocation (obrand: that may not be needed, I will confirm), QuartzCore and libsqlite3.dylib
 
