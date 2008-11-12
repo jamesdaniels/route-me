@@ -75,7 +75,7 @@ In your Controller header file (for example: MyViewController), import MapView.h
 #import "HerdMapView.h"
 
 @interface MyViewController : UIViewController {
-    RMMapView *herdMapView;
+    RMMapView *mapView;
     // Your own code....
 }
 
