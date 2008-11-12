@@ -53,7 +53,9 @@ We also need to add a couple other linked libraries. Click the linked libraries 
 
 ===Build Tab===
 Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add the path to the MapView directory contained in the route-me project located on your file system. (Note that if there are any spaces in the path, enclose the entire entry with "". 
-Example: "../route-me/trunk/MapView" Check the 'Recursive' box and click Ok.
+If route-me is placed next to your project on the file system, you would have the following in the path: "../route-me/trunk/MapView".
+
+Check the 'Recursive' box and click Ok.
 
 === Properties tab===
 Identifier will currently be: com.yourcompany.${PRODUCT_NAME:identifier}
