@@ -52,7 +52,8 @@ Click the direct dependency '+' and add MapView.xcodeproj->MapView. This causes 
 We also need to add a couple other linked libraries. Click the linked libraries '+' and add CoreGraphics, CoreLocation (obrand: that may not be needed, I will confirm), QuartzCore and libsqlite3.dylib
 
 ===Build Tab===
-Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add the path to the MapView directory contained in the route-me project located on your file system. (Note that if there are any spaces in the path, enclose the entire entry with "". For example: "/Users/johndoe/Projects/Map Applications/Route-Me/trunk/MapView" Check the 'Recursive' box and click Ok.
+Find "Header Search Paths" under "Search Paths". Double-click on the 'Header Search Paths' text and add the path to the MapView directory contained in the route-me project located on your file system. (Note that if there are any spaces in the path, enclose the entire entry with "". 
+Example: "../route-me/trunk/MapView" Check the 'Recursive' box and click Ok.
 
 === Properties tab===
 Identifier will currently be: com.yourcompany.${PRODUCT_NAME:identifier}
