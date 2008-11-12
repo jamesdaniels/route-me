@@ -65,7 +65,35 @@ You will probably get a few warnings from Proj4 and something about code signing
 
 Copy the marker png files from MapView's Resources folder into the assets folder of your parent project otherwise markers won't have images to plot.
 
-== Adding a map ==
+== Adding a map for non Interface Builder based application ==
+
+This is the most trivial way to integrate route-me in a project and does not require any extra special steps other than the traditional ones:
+
+In your Controller header file (for example: MyViewController), import MapView.h:
+
+#import "HerdMapView.h"
+
+@interface MyViewController : UIViewController {
+    RMMapView *herdMapView;
+    // Your own code....
+}
+
+@property (nonatomic, retain) RMMapView *mapView;;
+
+In your Controller implementation file (.m), write the following in the loadView method:
+
+- (void)loadView
+{
+	[self setMapView:[[[RMMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, desiredwidth, desiredheight)]autorelease]];
+	
+	[herdMapView setBackgroundColor:[UIColor blackColor]];
+	self.view = herdMapView;
+        // Your own code
+}
+
+Save and run.
+
+== Adding a map for Interface Builder based application ==
 
 Open the Resources group in XCode. Open MyAppViewController.xib (it will have a slightly different name depending on what your project is called).
 
