@@ -77,7 +77,7 @@ This is the most trivial way to integrate route-me in a project and does not req
 In your Controller header file (for example: MyViewController), import MapView.h:
 
 {{{
-#import "HerdMapView.h"
+#import "RMMapView.h"
 
 @interface MyViewController : UIViewController {
     RMMapView *mapView;
@@ -94,8 +94,8 @@ In your Controller implementation file (.m), write the following in the loadView
 {
 	[self setMapView:[[[RMMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, desiredwidth, desiredheight)]autorelease]];
 	
-	[herdMapView setBackgroundColor:[UIColor blackColor]];
-	self.view = herdMapView;
+	[mapView setBackgroundColor:[UIColor blackColor]];
+	self.view = mapView;
         // Your own code
 }
 }}}
