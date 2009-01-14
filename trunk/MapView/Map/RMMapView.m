@@ -535,7 +535,6 @@
 
 - (void)didReceiveMemoryWarning
 {
-	NSLog(@"MEMORY WARNING IN RMMAPView");
   CLLocationCoordinate2D coord = contents.mapCenter;
   [contents release];
   [self initValues:coord];
@@ -547,7 +546,11 @@
   [super setFrame:frame];
   // only change if the frame changes AND there is contents
   if (!CGRectEqualToRect(r, frame) && contents) {
-    [contents setFrame:frame];
+    CLLocationCoordinate2D coord = contents.mapCenter;
+    float zoom = contents.zoom;
+    [contents release];
+    [self initValues:coord];
+    contents.zoom = zoom;
   }
 }
 
