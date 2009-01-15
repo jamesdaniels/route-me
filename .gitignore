@@ -1,0 +1,11 @@
+# Lines starting with '#' are considered comments.
+# Ignore any file named .DS_Store.
+.DS_Store
+
+# Ignore build directory
+trunk/MapView/build/
+trunk/Proj4/build/
+
+# User specific project files
+*.mode1v3
+*.pbxuser
