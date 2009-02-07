@@ -422,7 +422,7 @@
 				if (delegateHasTapOnMarker) {
 					[delegate tapOnMarker:(RMMarker*)hit onMap:self];
 				}
-			} else if (superlayer != nil && [superlayer isMemberOfClass: [RMMarker class]]) {
+			} else if (superlayer != nil && [superlayer isKindOfClass: [RMMarker class]]) {
 				if (delegateHasTapOnLabelForMarker) {
 					[delegate tapOnLabelForMarker:(RMMarker*)superlayer onMap:self];
 				}
