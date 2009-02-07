@@ -500,7 +500,6 @@
 
 - (void)didReceiveMemoryWarning
 {
-	NSLog(@"MEMORY WARNING IN RMMAPView");
   CLLocationCoordinate2D coord = contents.mapCenter;
   [contents release];
   [self initValues:coord];
