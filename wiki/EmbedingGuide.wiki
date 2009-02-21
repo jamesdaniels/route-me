@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This guide takes you step-by-step through making an iphone application with an embedded map.
+This guide takes you step-by-step through making an iPhone application with an embedded map.
 
 
 == Setting up your directories ==
@@ -28,13 +28,13 @@ Checked out revision n.
 
 == Creating the project ==
 
-In XCode, create a new project. You can use any of the templates; but these instructions assume you use the view-based application template. Place your new project in the same directory into which you checked out Proj4 and MapView (projects/ above).
+In Xcode, create a new project. You can use any of the templates; but these instructions assume you use the _View-Based Application_ template. Place your new project in the same directory into which you checked out Proj4 and MapView (projects/ above).
 
 == Adding a project reference ==
 
 Next we need to add a reference to the MapView project. You do not need a reference to Proj4. So long as the proj4 project is sitting next to the mapview project, it should work fine.
 
-Open up the MapView project you just checked out in XCode. You can do this in finder or using terminal by typing:
+Open up the MapView project you just checked out in Xcode. You can do this in finder or using terminal by typing:
 
 {{{
 $ open MapView/MapView.xcodeproj
