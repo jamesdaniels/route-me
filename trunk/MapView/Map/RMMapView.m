@@ -62,6 +62,11 @@
 @synthesize decelerationFactor;
 @synthesize deceleration;
 
+-(RMMarkerManager*)markerManager
+{
+  return contents.markerManager;
+}
+
 -(void) initValues:(CLLocationCoordinate2D)latlong
 {
 	if(round(latlong.latitude) != 0 && round(latlong.longitude) != 0)
