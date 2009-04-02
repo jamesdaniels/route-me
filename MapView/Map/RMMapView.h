@@ -96,7 +96,8 @@ svn checkout http://route-me.googlecode.com/svn/trunk/ route-me-read-only
 typedef struct {
 	CGPoint center;
 	float averageDistanceFromCenter;
-	int numTouches;
+	int numTouches;           
+	NSMutableArray *locations;
 } RMGestureDetails;
 
 @class RMMapContents;
@@ -152,6 +153,9 @@ typedef struct {
 
 
 - (id)initWithFrame:(CGRect)frame WithLocation:(CLLocationCoordinate2D)latlong;
+
+// Allow pulling of gestures for higher level functionality, such as mapView rotation
+- (RMGestureDetails) getLastGesture;            
 
 - (void)moveToLatLong: (CLLocationCoordinate2D)latlong;
 - (void)moveToXYPoint: (RMXYPoint)aPoint;

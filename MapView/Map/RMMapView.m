@@ -149,6 +149,10 @@
 		return [super methodSignatureForSelector:aSelector];
 	else
 		return [self.contents methodSignatureForSelector:aSelector];
+}  
+
+- (RMGestureDetails) getLastGesture {
+	return lastGesture;
 }
 
 #pragma mark Delegate 
