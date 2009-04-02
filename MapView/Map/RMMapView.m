@@ -238,7 +238,8 @@
 {
 	RMGestureDetails gesture;
 	gesture.center.x = gesture.center.y = 0;
-	gesture.averageDistanceFromCenter = 0;
+	gesture.averageDistanceFromCenter = 0;   
+	gesture.locations = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	int interestingTouches = 0;
 	
@@ -255,7 +256,9 @@
 		CGPoint location = [touch locationInView: self];
 		
 		gesture.center.x += location.x;
-		gesture.center.y += location.y;
+		gesture.center.y += location.y;  
+		
+		[gesture.locations addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:location.x], [NSNumber numberWithFloat:location.y], NULL]];
 	}
 	
 	if (interestingTouches == 0)
